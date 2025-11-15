@@ -1449,6 +1449,6 @@ To view this diagram:
 ## Related Documentation
 
 - `README.md` - Project overview and setup instructions
-- `USAGE.md` - Detailed usage instructions
+- `docs/system-overview.md` - Concise system overview and usage notes
 - `DATA_COLLECTION_AND_ETHICS.md` - Ethics and data collection guidelines
 

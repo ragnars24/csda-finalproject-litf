@@ -260,10 +260,10 @@ node src/main.js
 ### Data Files
 
 - **`data/posts.csv`**: Collected reel data
-  - Columns: timestamp, persona_id, region, political_spectrum, feed_type, post_id, author_username, caption, likes_count, comments_count, view_count, hashtags, created_at, media_type
+  - Columns: timestamp, persona_id, gender, age, region, political_spectrum, feed_type, post_id, author_username, caption, likes_count, comments_count, view_count, hashtags, created_at, media_type, screenshot_path
 
 - **`data/sessions.csv`**: Scraping session summaries
-  - Columns: timestamp, persona_id, region, political_spectrum, feed_type, posts_collected, likes_performed, duration_seconds
+  - Columns: timestamp, persona_id, gender, age, region, political_spectrum, feed_type, posts_collected, likes_performed, duration_seconds
 
 - **`data/raw/`**: Raw intercepted network packets (JSONL format)
 
@@ -406,45 +406,50 @@ For multiple concurrent scrapers:
 │   │   ├── browser-lifecycle.js      # Browser lifecycle management
 │   │   ├── clicking.js               # Clicking utilities
 │   │   ├── navigation-strategies.js  # Navigation strategy implementations
-│   │   ├── page-navigator.js        # General page navigation
-│   │   ├── reel-navigator.js        # Reel-specific navigation
+│   │   ├── page-navigator.js         # General page navigation
+│   │   ├── reel-navigator.js         # Reel-specific navigation
 │   │   ├── screenshot-handler.js     # Screenshot functionality
-│   │   ├── scrolling.js             # Scrolling utilities
-│   │   └── typing.js                # Typing utilities
+│   │   ├── scrolling.js              # Scrolling utilities
+│   │   └── typing.js                 # Typing utilities
 │   ├── config/                       # Configuration
+│   │   ├── defaults.js               # Default scraper and proxy settings
 │   │   └── puppeteer-options.js      # Puppeteer launch options
 │   ├── core/                         # Core scraper logic
 │   │   └── scraper.js                # Main scraper orchestrator
 │   ├── extraction/                   # Data extraction logic
 │   │   ├── dom-extractor.js          # DOM-based extraction
-│   │   ├── graphql-extractor.js     # GraphQL response extraction
-│   │   ├── hashtag-extractor.js     # Hashtag extraction utilities
-│   │   ├── reel-collector.js        # Reel data collection manager
-│   │   └── reel-data-transformer.js # Data transformation utilities
+│   │   ├── graphql-extractor.js      # GraphQL response extraction
+│   │   ├── reel-collector.js         # Reel data collection manager
+│   │   └── reel-data-transformer.js  # Data transformation utilities
 │   ├── network/                      # Network interception
-│   │   ├── bandwidth-optimizer.js   # Bandwidth optimization
-│   │   ├── graphql-handler.js       # GraphQL response handler
-│   │   ├── packet-storage.js        # Packet storage wrapper
-│   │   └── request-interceptor.js   # Network request interception
+│   │   ├── bandwidth-optimizer.js    # Bandwidth optimization
+│   │   ├── graphql-handler.js        # GraphQL response handler
+│   │   ├── packet-storage.js         # Packet storage wrapper
+│   │   └── request-interceptor.js    # Network request interception
 │   ├── services/                     # Business logic services
-│   │   ├── auth-utils.js            # Authentication utilities
-│   │   ├── cookie-handler.js        # Cookie banner handling
-│   │   ├── engagement-strategy.js  # Engagement decision logic
-│   │   ├── like-handler.js          # Like functionality
-│   │   ├── login-flow.js            # Login flow orchestration
-│   │   ├── persona.js               # Persona loading and management
-│   │   ├── proxy.js                 # Proxy manager wrapper
-│   │   └── verification-handler.js # 2FA/verification handling
-│   ├── storage/                     # Data storage
-│   │   └── csv-storage.js           # CSV data storage
-│   ├── utils/                       # Utility functions
-│   │   ├── cli.js                   # CLI utilities
-│   │   ├── ip-checker.js            # IP/location checking
-│   │   ├── launch-browser.js        # Browser launch utility
-│   │   ├── logger.js                # Logging configuration
-│   │   ├── random.js                # Random delay utilities
-│   │   └── test-proxy.js            # Proxy testing utility
-│   └── main.js                      # Main entry point
+│   │   ├── auth-utils.js             # Authentication utilities
+│   │   ├── cookie-handler.js         # Cookie banner handling
+│   │   ├── app-prompt-handler.js     # \"Use the app\" prompt handling
+│   │   ├── cookie-session-capture.js # Cookie session capture and stats
+│   │   ├── engagement-strategy.js    # Engagement decision logic
+│   │   ├── like-handler.js           # Like functionality
+│   │   ├── login-flow.js             # Login flow orchestration
+│   │   ├── persona.js                # Persona loading and management
+│   │   ├── proxy.js                  # Proxy manager wrapper
+│   │   └── verification-handler.js   # 2FA/verification handling
+│   ├── storage/                      # Data storage
+│   │   └── csv-storage.js            # CSV data storage
+│   ├── utils/                        # Utility functions
+│   │   ├── cli.js                    # CLI utilities
+│   │   ├── hashtag-extractor.js      # Hashtag extraction utilities
+│   │   ├── interactive-browser.js    # Interactive browser/debug harness
+│   │   ├── ip-checker.js             # IP/location checking
+│   │   ├── launch-browser.js         # Browser launch utility
+│   │   ├── logger.js                 # Logging configuration
+│   │   ├── persona-loader.js         # Legacy persona loader utility
+│   │   ├── random.js                 # Random delay utilities
+│   │   └── test-proxy.js             # Proxy testing utility
+│   └── main.js                       # Main entry point
 ├── proxy/
 │   └── proxy-manager.js             # Proxy configuration manager
 ├── personas/
@@ -559,5 +564,6 @@ For issues and questions:
 1. Check the troubleshooting section
 2. Review logs in `logs/` directory
 3. Validate setup: `npm run validate`
-4. Check USAGE.md for detailed usage instructions
+4. See the **Usage** and **Makefile Commands** sections above for detailed usage instructions
+5. For a concise architecture and data-flow overview, see `docs/system-overview.md`
 

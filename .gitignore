@@ -30,7 +30,7 @@ npm-debug.log*
 .browser/
 browser_data/
 session_data/
-har-inspection/
+
 # Python (if analysis uses Python)
 __pycache__/
 *.py[cod]
@@ -43,6 +43,9 @@ venv/
 .DS_Store
 Thumbs.db
 
+# HAR
+*.har
+har-inspection/
 # IDE
 .vscode/
 .idea/

@@ -133,7 +133,7 @@ proxy-help:
 	@echo "Test your proxy configuration:"
 	@echo "  make test-proxy-country COUNTRY=DE"
 	@echo ""
-	@echo "For more information, see README.md and USAGE.md"
+	@echo "For more information, see README.md and docs/system-overview.md"
 
 # Run tests
 test:
