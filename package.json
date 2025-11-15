@@ -1,0 +1,42 @@
+{
+  "name": "instagram-sentiment-bias-study",
+  "version": "1.0.0",
+  "description": "Instagram reels scraper with proxy support for navigating and collecting reel data",
+  "main": "src/index.js",
+  "scripts": {
+    "setup": "npm install && mkdir -p data logs personas/templates personas/active && node scripts/validate-setup.js",
+    "validate": "node scripts/validate-setup.js",
+    "scrape": "node src/main.js",
+    "scrape:persona": "node src/main.js --persona",
+    "browser": "node src/utils/launch-browser.js",
+    "browser:interactive": "node src/utils/interactive-browser.js",
+    "test-proxy": "node src/utils/test-proxy.js",
+    "test": "jest",
+    "lint": "eslint src/"
+  },
+  "keywords": [
+    "instagram",
+    "reels",
+    "scraper",
+    "puppeteer",
+    "proxy"
+  ],
+  "author": "Reykjavík University - CSDA",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "https-proxy-agent": "^7.0.2",
+    "natural": "^6.10.3",
+    "puppeteer": "^24.29.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "sentiment": "^5.0.2",
+    "winston": "^3.11.0",
+    "yaml": "^2.3.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "jest": "^29.7.0"
+  }
+}

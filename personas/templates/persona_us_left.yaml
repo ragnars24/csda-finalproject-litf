@@ -1,0 +1,41 @@
+# US Left Persona Template
+persona_id: "persona_us_left_001"
+region: "us"
+political_spectrum: "left"
+created_at: "2025-11-02"
+description: "17-year-old following left-leaning US political figures"
+
+# Demographics
+demographics:
+  age: 17
+  gender: "female"
+  language: "en"
+  timezone: "America/Los_Angeles"
+
+# Account credentials (use environment variables)
+credentials:
+  username: "${PERSONA_US_LEFT_001_USERNAME}"
+  password: "${PERSONA_US_LEFT_001_PASSWORD}"
+  email: "${PERSONA_US_LEFT_001_EMAIL}"
+
+# Proxy configuration
+proxy:
+  provider: "iproyal"
+  country_code: "US"
+  city: "San Francisco"
+  sticky_session: true
+  session_duration_minutes: 30
+
+# Political signaling - following specific figures
+political_figures:
+  follows:
+    - username: "berniesanders"
+      name: "Bernie Sanders"
+      platform: "instagram"
+    - username: "aoc"
+      name: "Alexandria Ocasio-Cortez"
+      platform: "instagram"
+    - username: "elizabethwarren"
+      name: "Elizabeth Warren"
+      platform: "instagram"
+

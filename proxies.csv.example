@@ -1,0 +1,11 @@
+# Proxy Configuration CSV
+# Format: name,username,password,host,port,country_code
+# 
+# Example entries:
+# BR Proxy,Jk798w814bQGpNtA,tHDiBLhCwNXTYikm_country-br_session-xyz_lifetime-59m,geo.iproyal.com,12321,BR
+# US Proxy,Jk798w814bQGpNtA,tHDiBLhCwNXTYikm_country-us_state-arizona_session-xyz_lifetime-168h,geo.iproyal.com,12321,US
+# DE Proxy,Jk798w814bQGpNtA,tHDiBLhCwNXTYikm_country-de_session-xyz_lifetime-168h,geo.iproyal.com,12321,DE
+#
+# If this file doesn't exist, the test script will automatically extract proxies from persona YAML files
+name,username,password,host,port,country_code
+

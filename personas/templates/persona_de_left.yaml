@@ -1,0 +1,40 @@
+# Germany Left Persona Template
+persona_id: "persona_de_left_001"
+region: "de"
+political_spectrum: "left"
+description:"INSERT DESCRIPTION HERE"
+
+# Demographics
+demographics:
+  age: 17
+  gender: "" # MALE / FEMALE
+  language: "de"
+  timezone: "Europe/Berlin"
+
+# Account credentials (use environment variables)
+credentials:
+  username: "${PERSONA_DE_LEFT_001_USERNAME}"
+  password: "${PERSONA_DE_LEFT_001_PASSWORD}"
+  email: "${PERSONA_DE_LEFT_001_EMAIL}"
+
+# Proxy configuration
+proxy:
+  provider: "iproyal"
+  country_code: "DE"
+  city: "Berlin"
+  sticky_session: true
+  session_duration_minutes: 30
+
+# Political signaling - following specific figures
+political_figures:
+  follows:
+    - username: "spdde"
+      name: "SPD"
+      platform: "instagram"
+    - username: "die_gruenen"
+      name: "Die Grünen"
+      platform: "instagram"
+    - username: "janine_wissler"
+      name: "Janine Wissler"
+      platform: "instagram"
+

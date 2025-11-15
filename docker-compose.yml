@@ -1,0 +1,119 @@
+# Docker Compose configuration for Instagram Reels Scraper
+# 
+# Usage:
+#   - Single persona: docker compose up scraper-persona-test-001
+#   - All personas sequentially: docker compose up scraper-all
+#   - Multiple personas concurrently: docker compose up scraper-persona-test-001 scraper-persona-de-right-001
+#   - All personas concurrently: docker compose up --scale scraper-persona=2 (if using template)
+
+services:
+  # Service to scrape all personas sequentially (default behavior)
+  scraper-all:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+    platform: linux/amd64
+    container_name: instagram-scraper-all
+    restart: unless-stopped
+    stdin_open: true  # Enable stdin for interactive prompts
+    tty: true         # Allocate a pseudo-TTY for interactive prompts
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - VERIFICATION_CODE=${VERIFICATION_CODE:-}  # Optional: set verification code via env var
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./personas:/app/personas:ro
+      - .:/app/screenshots  # Mount screenshots directory
+    command: ["node", "src/main.js"]
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+  # Template service for individual persona scraping
+  # This can be scaled or used as a base for specific persona services
+  scraper-persona:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+    platform: linux/amd64
+    restart: unless-stopped
+    stdin_open: true  # Enable stdin for interactive prompts
+    tty: true         # Allocate a pseudo-TTY for interactive prompts
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - VERIFICATION_CODE=${VERIFICATION_CODE:-}  # Optional: set verification code via env var
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./personas:/app/personas:ro
+      - .:/app/screenshots  # Mount screenshots directory
+    # Override command with specific persona ID
+    # Supports environment variables:
+    #   USE_PROXY=false to disable proxy (adds --no-proxy flag)
+    #   BLOCK_MEDIA=image,media to customize media blocking (adds --block-media flag)
+    #   VERIFICATION_CODE=123456 to provide verification code (for Docker non-interactive mode)
+    command: >
+      sh -c "
+      CMD='node src/main.js --persona ${PERSONA_ID:-persona_test_001} --headless';
+      if [ \"$${USE_PROXY:-true}\" = 'false' ]; then CMD=\"$$CMD --no-proxy\"; fi;
+      if [ -n \"$${BLOCK_MEDIA}\" ]; then CMD=\"$$CMD --block-media \\\"$${BLOCK_MEDIA}\\\"\"; fi;
+      exec $$CMD
+      "
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1.5G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # Individual persona services - add one for each persona you want to run concurrently
+  # These will run in parallel when started together
+  scraper-persona-test-001:
+    extends: scraper-persona
+    container_name: instagram-scraper-test-001
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - PERSONA_ID=persona_test_001
+    # Supports environment variables USE_PROXY and BLOCK_MEDIA
+    command: >
+      sh -c "
+      CMD='node src/main.js --persona persona_test_001 --headless';
+      if [ \"$${USE_PROXY:-true}\" = 'false' ]; then CMD=\"$$CMD --no-proxy\"; fi;
+      if [ -n \"$${BLOCK_MEDIA}\" ]; then CMD=\"$$CMD --block-media \\\"$${BLOCK_MEDIA}\\\"\"; fi;
+      exec $$CMD
+      "
+
+  scraper-persona-de-right-001:
+    extends: scraper-persona
+    container_name: instagram-scraper-de-right-001
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - PERSONA_ID=persona_de_right_001
+    # Supports environment variables USE_PROXY and BLOCK_MEDIA
+    command: >
+      sh -c "
+      CMD='node src/main.js --persona persona_de_right_001 --headless';
+      if [ \"$${USE_PROXY:-true}\" = 'false' ]; then CMD=\"$$CMD --no-proxy\"; fi;
+      if [ -n \"$${BLOCK_MEDIA}\" ]; then CMD=\"$$CMD --block-media \\\"$${BLOCK_MEDIA}\\\"\"; fi;
+      exec $$CMD
+      "

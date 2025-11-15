@@ -1,0 +1,37 @@
+# Germany Right Persona Template
+persona_id: "persona_test_001"
+region: "us"
+political_spectrum: "right"
+description: "16-year-old following right-leaning US political figures"
+
+# Demographics
+demographics:
+  age: "16" # AGE HERE
+  gender: "MALE" # MALE / FEMALE
+  language: "en"
+  timezone: "America/Los_Angeles"
+
+# Account credentials (use environment variables)
+credentials:
+  username: "${PERSONA_TEST_001_USERNAME}"
+  password: "${PERSONA_TEST_001_PASSWORD}"
+  email: "${PERSONA_TEST_001_EMAIL}"
+
+# Proxy configuration
+proxy:
+  provider: "iproyal"
+  country_code: "US"
+  city: "Los Angeles"
+  sticky_session: true
+  session_duration_minutes: 30
+
+# Political signaling - following specific figures
+political_figures:
+  follows:
+    - username: "joebiden"
+      name: "Joe Biden"
+      platform: "instagram"
+    - username: "kamalaharris"
+      name: "Kamala Harris"
+      platform: "instagram"
+

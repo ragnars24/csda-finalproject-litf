@@ -1,0 +1,40 @@
+# Germany Right Persona Template
+persona_id: "persona_de_right_001"
+region: "de"
+political_spectrum: "right"
+description: "" # DESCRIPTION HERE
+
+# Demographics
+demographics:
+  age: "" # AGE HERE
+  gender: "" # MALE / FEMALE
+  language: "de"
+  timezone: "Europe/Berlin"
+
+# Account credentials (use environment variables)
+credentials:
+  username: "${PERSONA_DE_RIGHT_001_USERNAME}"
+  password: "${PERSONA_DE_RIGHT_001_PASSWORD}"
+  email: "${PERSONA_DE_RIGHT_001_EMAIL}"
+
+# Proxy configuration
+proxy:
+  provider: "iproyal"
+  country_code: "DE"
+  city: "Munich"
+  sticky_session: true
+  session_duration_minutes: 30
+
+# Political signaling - following specific figures
+political_figures:
+  follows:
+    - username: "csu"
+      name: "CSU"
+      platform: "instagram"
+    - username: "_cducsu.de"
+      name: "CDU/CSU"
+      platform: "instagram"
+    - username: "markus.soeder"
+      name: "Markus Söder"
+      platform: "instagram"
+

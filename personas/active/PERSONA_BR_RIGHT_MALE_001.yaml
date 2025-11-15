@@ -1,0 +1,38 @@
+# US Left Persona Template
+persona_id: "PERSONA_BR_RIGHT_MALE_001"
+name: "Joao Silva"
+region: "br"
+political_spectrum: "right"
+description: "A 13-year-old following right-leaning Brazilian political figures"
+# Demographics
+demographics:
+  age: 13
+  gender: male
+  language: "Portuguese"
+  timezone: "America/Sao_Paulo"
+
+credentials:
+  username: "${PERSONA_BR_RIGHT_MALE_001_USERNAME}"
+  password: "${PERSONA_BR_RIGHT_MALE_001_PASSWORD}"
+  email: "${PERSONA_BR_RIGHT_MALE_001_EMAIL}"
+
+proxy:
+  provider: "iproyal"
+  username: "Jk798w814bQGpNtA"
+  password: "tHDiBLhCwNXTYikm_country-br_session-yaaLXOQc_lifetime-59m"
+  host: "geo.iproyal.com"
+  port: "12321"
+
+# Political signaling - following specific figures
+political_figures:
+  follows:
+    - username: "jairmessiasbolsonaro"
+      name: "Jair Bolsonaro"
+      platform: "instagram"
+engagement:
+  likes:
+    enabled: false  # Set to false to disable liking
+    # Or use: probability: 0.15  # for 15% chance
+    delay_seconds:
+      min: 2
+      max: 5

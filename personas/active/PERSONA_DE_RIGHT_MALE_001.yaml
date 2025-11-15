@@ -1,0 +1,47 @@
+# Germany Right Persona Template
+persona_id: "PERSONA_DE_RIGHT_MALE_001"
+name: "Lukas Weber"
+region: "de"
+
+political_spectrum: "right"
+description: "17-year-old following right-leaning German political figures" # DESCRIPTION HERE
+# Demographics
+demographics:
+  age: 17 # AGE HERE
+  gender: "male" # MALE / FEMALE
+  language: "de"
+  timezone: "Europe/Berlin"
+
+# Account credentials (use environment variables - NEVER store passwords in plaintext)
+credentials:
+  username: "${PERSONA_DE_RIGHT_MALE_001_USERNAME}"
+  password: "${PERSONA_DE_RIGHT_MALE_001_PASSWORD}"
+  email: "${PERSONA_DE_RIGHT_MALE_001_EMAIL}"
+
+proxy:
+  provider: "iproyal"
+  username: "Jk798w814bQGpNtA"
+  password: "tHDiBLhCwNXTYikm_country-de_city-bremen_session-eitO8mWw_lifetime-24h_streaming-1"
+  host: "geo.iproyal.com"
+  port: "12321"
+
+# Political signaling - following specific figures
+political_figures:
+  follows:
+    - username: "csu"
+      name: "CSU"
+      platform: "instagram"
+    - username: "_cducsu.de"
+      name: "CDU/CSU"
+      platform: "instagram"
+    - username: "markus.soeder"
+      name: "Markus Söder"
+      platform: "instagram"
+
+engagement:
+  likes:
+    enabled: false  # Set to false to disable liking
+    # Or use: probability: 0.15  # for 15% chance
+    delay_seconds:
+      min: 2
+      max: 5

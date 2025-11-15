@@ -1,0 +1,47 @@
+# Germany Right Persona Template
+persona_id: "PERSONA_DE_LEFT_FEMALE_002"
+name: "Anna Becker"
+region: "de"
+
+political_spectrum: "right"
+description: "15-year-old following left-leaning German political figures" # DESCRIPTION HERE
+# Demographics
+demographics:
+  age: 15 # AGE HERE
+  gender: "female" # MALE / FEMALE
+  language: "de"
+  timezone: "Europe/Berlin"
+
+
+credentials:
+  username: "annabeckerde@proton.me"
+  password: "annabecker123"
+  email: "annabeckerde@proton.me"
+
+proxy:
+  provider: "iproyal"
+  username: "Jk798w814bQGpNtA"
+  password: "tHDiBLhCwNXTYikm_country-de_city-schleswig_session-WhCVYSb6_lifetime-168h"
+  host: "geo.iproyal.com"
+  port: "12321"
+
+# Political signaling - following specific figures
+political_figures:
+  follows:
+    - username: "csu"
+      name: "CSU"
+      platform: "instagram"
+    - username: "_cducsu.de"
+      name: "CDU/CSU"
+      platform: "instagram"
+    - username: "markus.soeder"
+      name: "Markus Söder"
+      platform: "instagram"
+
+engagement:
+  likes:
+    enabled: false  # Set to false to disable liking
+    # Or use: probability: 0.15  # for 15% chance
+    delay_seconds:
+      min: 2
+      max: 5

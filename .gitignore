@@ -1,0 +1,64 @@
+# Node modules
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+
+# Persona credentials (security)
+personas/*.local.yaml
+personas/credentials/
+
+# data
+
+
+# Data collection output
+data/
+screenshots/
+scraped_data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Browser data
+.browser/
+browser_data/
+session_data/
+har-inspection/
+# Python (if analysis uses Python)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+*.egg-info/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Analysis outputs (keep generated, but not raw)
+analysis/output/raw/
+
+# Credentials backup
+*.key
+*.pem
+backup_codes.txt
+

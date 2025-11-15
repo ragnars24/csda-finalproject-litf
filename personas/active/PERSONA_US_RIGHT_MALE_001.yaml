@@ -1,0 +1,47 @@
+# US Left Persona Template
+persona_id: "PERSONA_US_RIGHT_MALE_001"
+name: "Michael Turner"
+region: "us"
+political_spectrum: "right"
+description: "A 15-year-old male born 11 september 2010 student from Portland who is passionate about social justice and environmental issues. Actively uses Instagram to follow progressive movements and share educational content."
+
+# Demographics
+demographics:
+  age: 15
+  gender: male
+  language: "English"
+  timezone: "America/Los_Angeles"
+
+# Account credentials (use environment variables - NEVER store passwords in plaintext)
+credentials:
+  username: "${PERSONA_US_RIGHT_MALE_001_USERNAME}"
+  password: "${PERSONA_US_RIGHT_MALE_001_PASSWORD}"
+  email: "${PERSONA_US_RIGHT_MALE_001_EMAIL}"
+
+proxy:
+  provider: "iproyal"
+  username: "Jk798w814bQGpNtA"
+  password: "tHDiBLhCwNXTYikm_country-us_state-arizona_session-E0y0vxxx_lifetime-24h_streaming-1"
+  host: "geo.iproyal.com"
+  port: "12321"
+
+# Political signaling - following specific figures
+political_figures:
+  follows:
+    - username: "berniesanders"
+      name: "Bernie Sanders"
+      platform: "instagram"
+    - username: "aoc"
+      name: "Alexandria Ocasio-Cortez"
+      platform: "instagram"
+    - username: "ilhanmn"
+      name: "Ilhan Omar"
+      platform: "instagram"
+
+engagement:
+  likes:
+    enabled: false  # Set to false to disable liking
+    # Or use: probability: 0.15  # for 15% chance
+    delay_seconds:
+      min: 2
+      max: 5
